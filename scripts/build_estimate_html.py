@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
 Production Scope & Formal Estimate Generator
-USAC E-Rate Form 470 & Public-Sector Procurement Intelligence Platform
-Client: George (MSP / Technology Reseller Firm, Oklahoma City, OK, USA)
+RFP & Procurement Intelligence App — Client: George (Oklahoma City, OK, USA)
 Built to exact BarakahSoft Gold-Standard Architecture:
 - 6 Direct Flex Children (Zero Middle Void)
 - High-Density 6-Row Scope Table with Percentage Allocations
@@ -37,7 +36,7 @@ def build_estimate():
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Production Scope &amp; Formal Estimate - E-Rate &amp; Public Procurement Intelligence Engine</title>
+  <title>Production Scope &amp; Formal Estimate - RFP &amp; Procurement Intelligence App</title>
   <style>
     @page {{
       size: letter portrait;
@@ -59,485 +58,563 @@ def build_estimate():
       font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       color: #0f172a;
       line-height: 1.32;
-      font-size: 8.5px;
+      font-size: 9.4px;
     }}
-    .sheet {{
-      width: 100%;
-      height: 100%;
+
+    .page-container {{
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      height: 100%;
+      box-sizing: border-box;
+      gap: 6px;
     }}
 
-    /* 1. Header */
+    /* 1. Executive Header */
     .header {{
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      padding-bottom: 7px;
-      border-bottom: 1.5px solid #0f172a;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 2px solid #0f2942;
+      padding-bottom: 6px;
+    }}
+    .header-left {{
+      flex: 1;
+      min-width: 0;
     }}
     .brand-title {{
-      font-size: 15px;
+      font-size: 8.5px;
       font-weight: 800;
-      letter-spacing: -0.02em;
-      color: #0f172a;
-      margin-bottom: 2px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }}
-    .brand-badge {{
-      background: #4f46e5;
-      color: #ffffff;
-      font-size: 8px;
-      font-weight: 700;
-      padding: 1.5px 5px;
-      border-radius: 3px;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      color: #0284c7;
+      margin-bottom: 2px;
+      white-space: nowrap;
     }}
-    .doc-subtitle {{
-      font-size: 9px;
-      font-weight: 600;
+    h1 {{
+      font-size: 13px;
+      font-weight: 800;
+      color: #0f2942;
+      margin: 0 0 2px 0;
+      letter-spacing: -0.02em;
+      line-height: 1.18;
+      white-space: nowrap;
+    }}
+    .subtitle {{
+      font-size: 8.6px;
       color: #475569;
+      margin: 0;
+      line-height: 1.25;
+      white-space: nowrap;
     }}
-    .meta-table {{
-      font-size: 8px;
-      border-collapse: collapse;
+    .meta-card {{
+      flex-shrink: 0;
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 5px 10px;
+      font-size: 8.3px;
       text-align: right;
+      line-height: 1.36;
+      white-space: nowrap;
     }}
-    .meta-table td {{
-      padding: 1px 0 1px 8px;
-    }}
-    .meta-label {{
-      color: #64748b;
-      font-weight: 500;
-    }}
-    .meta-val {{
-      font-weight: 700;
+    .meta-card strong {{
       color: #0f172a;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }}
+    .live-badge {{
+      display: inline-block;
+      background: #ecfdf5;
+      color: #059669;
+      border: 1px solid #a7f3d0;
+      font-weight: 700;
+      padding: 1px 5px;
+      border-radius: 9999px;
+      font-size: 8px;
+      text-transform: uppercase;
+      margin-left: 3px;
     }}
 
-    /* Section Subheaders */
-    .sec-header {{
+    /* 2. Scope & Milestones Table */
+    .scope-block {{
+      margin-top: 0;
+    }}
+    .section-header {{
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 4px;
+      align-items: center;
+      margin-bottom: 3.5px;
     }}
-    .sec-title {{
-      font-size: 8.8px;
+    .section-title {{
+      font-size: 9.6px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      color: #0f172a;
-      display: flex;
-      align-items: center;
-      gap: 4px;
+      color: #0f2942;
+      border-left: 3px solid #0284c7;
+      padding-left: 6px;
+      margin: 0;
     }}
-    .sec-tag {{
-      font-size: 7.5px;
-      font-weight: 600;
+    .section-meta {{
+      font-size: 8.2px;
       color: #64748b;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
     }}
-
-    /* 2. Scope Table */
-    .scope-table {{
+    table {{
       width: 100%;
       border-collapse: collapse;
-      font-size: 8px;
-      border: 1px solid #cbd5e1;
     }}
-    .scope-table th {{
+    th {{
       background: #f1f5f9;
       color: #334155;
       font-weight: 700;
       text-transform: uppercase;
-      font-size: 7.2px;
-      letter-spacing: 0.03em;
-      padding: 3.5px 5px;
-      border-bottom: 1px solid #cbd5e1;
+      font-size: 8.2px;
+      letter-spacing: 0.04em;
+      border: 1px solid #cbd5e1;
+      padding: 3.8px 6px;
       text-align: left;
     }}
-    .scope-table td {{
-      padding: 3.2px 5px;
-      border-bottom: 1px solid #e2e8f0;
+    td {{
+      border: 1px solid #e2e8f0;
+      padding: 3.8px 6px;
+      font-size: 8.5px;
       vertical-align: top;
     }}
-    .phase-badge {{
-      display: inline-block;
-      font-weight: 700;
-      font-size: 7.2px;
-      padding: 1px 4px;
-      border-radius: 2px;
-      background: #e0e7ff;
-      color: #3730a3;
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      white-space: nowrap;
-    }}
-    .phase-pre {{
-      background: #dcfce7;
-      color: #166534;
-    }}
-    .col-deliverable {{
-      font-weight: 600;
-      color: #0f172a;
-    }}
-    .col-desc {{
-      font-size: 7.4px;
-      color: #475569;
-      line-height: 1.25;
-    }}
-    .num-col {{
-      text-align: right;
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-weight: 600;
-      white-space: nowrap;
-    }}
-    .scope-table tfoot td {{
-      background: #f8fafc;
+    .phase-num {{
       font-weight: 800;
+      color: #1e293b;
+      font-size: 8.5px;
+      white-space: nowrap;
+    }}
+    .phase-name {{
+      font-weight: 700;
       color: #0f172a;
-      border-top: 1.5px solid #0f172a;
-      padding: 4px 5px;
-      font-size: 8.2px;
+      font-size: 8.8px;
+    }}
+    .phase-desc {{
+      color: #475569;
+      font-size: 7.9px;
+      margin-top: 1px;
+      line-height: 1.22;
+    }}
+    .phase-0-row {{
+      background: #f0fdf4;
+    }}
+    .phase-0-badge {{
+      color: #15803d;
+      font-weight: 800;
+    }}
+    .total-row {{
+      background: #0f172a;
+      color: #ffffff;
+      font-weight: 800;
+      border: 1px solid #0f172a;
+    }}
+    .total-row td {{
+      border: 1px solid #0f172a;
+      padding: 4.2px 6px;
+      font-size: 8.8px;
     }}
 
-    /* 3. Milestones & Guardrails Grid */
-    .grid-row {{
+    /* 3. 2-Column Technical & Financial Breakdown */
+    .grid-2col {{
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 7px;
     }}
     .card-box {{
       border: 1px solid #cbd5e1;
-      border-radius: 4px;
-      padding: 5.5px 7px;
-      background: #ffffff;
+      border-radius: 6px;
+      background: #f8fafc;
+      padding: 5px 9px;
     }}
-    .card-title {{
-      font-size: 8px;
-      font-weight: 700;
+    .card-box-title {{
+      font-size: 8.4px;
+      font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.04em;
-      color: #0f172a;
-      margin-bottom: 3.5px;
-      padding-bottom: 2px;
+      color: #0f2942;
+      margin: 0 0 3px 0;
+      display: flex;
+      align-items: center;
+      gap: 4px;
       border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 2px;
+    }}
+    .milestone-item {{
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px dotted #cbd5e1;
+      padding: 2px 0;
+      font-size: 7.8px;
     }}
-    .item-list {{
-      display: flex;
-      flex-direction: column;
-      gap: 2.2px;
-      font-size: 7.4px;
+    .milestone-item:last-child {{
+      border-bottom: none;
+      padding-bottom: 0;
+    }}
+    .milestone-name {{
       color: #334155;
     }}
-    .item-row {{
-      display: flex;
-      align-items: flex-start;
-      gap: 4px;
-      line-height: 1.25;
-    }}
-    .item-bullet {{
-      color: #4f46e5;
+    .milestone-val {{
       font-weight: 800;
-      font-size: 8px;
-      line-height: 1;
+      color: #0f172a;
+      font-family: ui-monospace, monospace;
+      white-space: nowrap;
+    }}
+    .guardrail-item {{
+      font-size: 7.8px;
+      color: #334155;
+      margin-bottom: 2px;
+      padding-left: 10px;
+      position: relative;
+      line-height: 1.22;
+    }}
+    .guardrail-item:last-child {{
+      margin-bottom: 0;
+    }}
+    .guardrail-item::before {{
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #16a34a;
+      font-weight: 800;
+      font-size: 7.5px;
     }}
 
-    /* 4. Commercial Terms */
+    /* 4. Commercial Terms Section */
     .terms-box {{
       border: 1px solid #cbd5e1;
-      border-radius: 4px;
-      padding: 5px 7px;
-      background: #f8fafc;
+      border-radius: 6px;
+      background: #ffffff;
+      padding: 5px 9px;
     }}
     .terms-grid {{
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 6px;
+      gap: 8px;
     }}
     .term-col {{
-      font-size: 7.3px;
+      font-size: 7.8px;
+      line-height: 1.22;
     }}
     .term-title {{
-      font-weight: 700;
-      color: #0f172a;
+      font-weight: 800;
+      color: #0284c7;
+      text-transform: uppercase;
+      font-size: 7.7px;
       margin-bottom: 1px;
     }}
     .term-body {{
       color: #475569;
-      line-height: 1.25;
     }}
 
-    /* 5. Authorization Block */
+    /* 5. Formal Acceptance Authorization Block */
     .auth-block {{
-      border: 1px solid #cbd5e1;
-      border-radius: 4px;
-      padding: 5.5px 8px;
-      background: #ffffff;
+      border: 1px solid #94a3b8;
+      border-radius: 6px;
+      background: #f8fafc;
+      padding: 6px 11px;
     }}
     .auth-title {{
-      font-size: 8px;
+      font-size: 8.4px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
       color: #0f172a;
       margin-bottom: 3.5px;
       display: flex;
       justify-content: space-between;
-      border-bottom: 1px solid #e2e8f0;
+      align-items: center;
+      border-bottom: 1px solid #cbd5e1;
       padding-bottom: 2px;
     }}
     .auth-grid {{
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      font-size: 7.4px;
+      gap: 14px;
     }}
     .auth-party {{
       display: flex;
       flex-direction: column;
-      gap: 1.5px;
+      gap: 2px;
+      font-size: 7.9px;
     }}
     .auth-party-title {{
       font-weight: 700;
-      color: #0f172a;
+      color: #334155;
+      text-transform: uppercase;
+      font-size: 7.8px;
+      margin-bottom: 1px;
     }}
     .auth-sign-line {{
       display: flex;
-      gap: 6px;
       align-items: flex-end;
+      gap: 8px;
       margin-top: 3px;
-      padding-bottom: 1.5px;
-      border-bottom: 1px solid #0f172a;
     }}
     .auth-sign-field {{
       flex: 1;
-      font-family: 'Brush Script MT', 'Dancing Script', cursive, sans-serif;
-      font-size: 11px;
-      color: #1e1b4b;
+      border-bottom: 1.2px solid #475569;
+      min-height: 22px;
+      display: flex;
+      align-items: flex-end;
+      font-family: "Brush Script MT", "Caveat", cursive, sans-serif;
+      font-size: 13px;
+      color: #0f2942;
+      padding-left: 4px;
+      padding-bottom: 1px;
     }}
     .auth-date-field {{
-      width: 80px;
+      width: 90px;
+      border-bottom: 1.2px solid #475569;
+      min-height: 22px;
+      font-family: ui-monospace, monospace;
+      font-size: 8px;
+      color: #334155;
       text-align: center;
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 7.5px;
-      font-weight: 600;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 1px;
+      white-space: nowrap;
     }}
     .auth-label {{
-      font-size: 6.8px;
+      font-size: 7px;
       color: #64748b;
       text-transform: uppercase;
-      font-weight: 600;
+      margin-top: 1.5px;
     }}
 
-    /* 6. Footer */
+    /* 6. Executive Signature Footer */
     .footer-container {{
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      background: #f8fafc;
+      padding: 5px 11px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-top: 5px;
-      border-top: 1.5px solid #0f172a;
-      font-size: 7.5px;
+      gap: 12px;
     }}
     .footer-founder {{
       display: flex;
       align-items: center;
-      gap: 7px;
+      gap: 9px;
+      flex: 1;
+      min-width: 0;
     }}
     .founder-avatar {{
-      width: 28px;
-      height: 28px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
-      border: 1px solid #cbd5e1;
       object-fit: cover;
+      border: 1.5px solid #0f2942;
+      flex-shrink: 0;
     }}
     .founder-info {{
-      line-height: 1.25;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      min-width: 0;
     }}
     .founder-name {{
-      font-size: 8.5px;
+      font-size: 8.8px;
       color: #0f172a;
+      line-height: 1.18;
+      white-space: nowrap;
+    }}
+    .founder-name strong {{
+      color: #0f172a;
+      font-weight: 800;
     }}
     .founder-company {{
-      color: #475569;
-      font-size: 7.3px;
+      font-size: 8px;
+      color: #334155;
+      line-height: 1.18;
+      white-space: nowrap;
+    }}
+    .founder-company strong {{
+      color: #1e293b;
+      font-weight: 700;
     }}
     .founder-sub {{
-      color: #64748b;
-      font-size: 7px;
+      font-size: 7.5px;
+      color: #475569;
+      line-height: 1.18;
+      white-space: nowrap;
     }}
     .footer-brand {{
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      gap: 1.5px;
+      gap: 2.5px;
+      flex-shrink: 0;
     }}
     .business-logo {{
-      height: 15px;
+      height: 17px;
+      width: auto;
       object-fit: contain;
     }}
     .demo-badge {{
-      font-size: 7px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      color: #4f46e5;
+      font-size: 7.6px;
+      color: #0369a1;
+      background: #e0f2fe;
+      border: 1px solid #bae6fd;
+      padding: 1.5px 6px;
+      border-radius: 3px;
+      font-weight: 700;
+      font-family: ui-monospace, monospace;
       text-decoration: none;
-      font-weight: 600;
+      white-space: nowrap;
     }}
   </style>
 </head>
 <body>
-<div class="sheet">
-  <!-- 1. Header Section -->
+<div class="page-container">
+
+  <!-- 1. Executive Header -->
   <div class="header">
-    <div>
-      <div class="brand-title">
-        <span>ProcureIQ™ E-Rate &amp; Public Procurement Intelligence</span>
-        <span class="brand-badge">Enterprise Scope</span>
-      </div>
-      <div class="doc-subtitle">USAC Form 470 RFP Scoring &amp; Public Purchasing History Normalization System</div>
+    <div class="header-left">
+      <div class="brand-title">BarakahSoft LLC • Systems Architecture • Ref #BS-2026-USAC-RFP</div>
+      <h1>USAC E-Rate &amp; Public Procurement Intelligence Platform</h1>
+      <p class="subtitle">USAC SODA API Ingestion • Explainable Weighted Scoring • Public Records Normalization • Dual AI Fallback</p>
     </div>
-    <table class="meta-table">
-      <tr>
-        <td class="meta-label">Client Target:</td>
-        <td class="meta-val">George (MSP/VAR, Oklahoma City, OK)</td>
-      </tr>
-      <tr>
-        <td class="meta-label">Prepared By:</td>
-        <td class="meta-val">Md Shakil A. • BarakahSoft LLC</td>
-      </tr>
-      <tr>
-        <td class="meta-label">Date &amp; Term:</td>
-        <td class="meta-val">15 Sep 2026 • 58 Hours Fixed Scope</td>
-      </tr>
-    </table>
+    <div class="meta-card">
+      <div><strong>Client:</strong> George (MSP/VAR, Oklahoma City, OK)</div>
+      <div><strong>Timeline:</strong> 14–15 Business Days (Turnkey Delivery)</div>
+      <div><strong>Turnkey Package:</strong> <strong>$2,320.00 Fixed USD</strong> (58h @ $40/hr)</div>
+      <div><strong>Live Prototype:</strong> <span class="live-badge">Verified &amp; Operational</span></div>
+    </div>
   </div>
 
-  <!-- 2. Scope Table Section -->
-  <div>
-    <div class="sec-header">
-      <span class="sec-title">Implementation Milestones &amp; Resource Allocation</span>
-      <span class="sec-tag">Turnkey Engineering • Calibrated to Client Historical Rate ($40.00/hr)</span>
+  <!-- 2. Scope Table -->
+  <div class="scope-block">
+    <div class="section-header">
+      <h2 class="section-title">Production Scope &amp; Milestone Delivery Schedule</h2>
+      <div class="section-meta">Live Cockpit: https://erate-procure-iq.vercel.app</div>
     </div>
-    <table class="scope-table">
+
+    <table>
       <thead>
         <tr>
-          <th style="width: 10%;">Phase</th>
-          <th style="width: 28%;">Milestone Deliverable</th>
-          <th style="width: 38%;">Architectural Implementation Details</th>
-          <th style="width: 8%;" class="num-col">Hours</th>
-          <th style="width: 8%;" class="num-col">Rate</th>
-          <th style="width: 8%;" class="num-col">Total</th>
+          <th style="width: 12%;">Milestone</th>
+          <th style="width: 58%;">Architecture &amp; Production Engineering Deliverables</th>
+          <th style="width: 10%; text-align: center;">Timeline</th>
+          <th style="width: 8%; text-align: center;">Share</th>
+          <th style="width: 12%; text-align: right;">Investment</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td><span class="phase-badge phase-pre">Phase 0</span></td>
-          <td class="col-deliverable">Live Working Prototype</td>
-          <td class="col-desc">Fully functional Next.js 15 dual-module application with Form 470 scoring, public purchasing search, and live AI spec extractor.</td>
-          <td class="num-col">Pre-Funded</td>
-          <td class="num-col">$0.00</td>
-          <td class="num-col">$0.00</td>
+        <tr class="phase-0-row">
+          <td class="phase-num"><span class="phase-0-badge">Phase 0</span></td>
+          <td>
+            <div class="phase-name">Interactive Architecture Prototype &amp; Operational Cockpit (Live)</div>
+            <div class="phase-desc">Working dual-module platform with USAC Form 470 scoring engine, slide-out Score Explainer drawer, public purchase history search across OK/TX/AR, dual-provider OpenAI/Gemini AI analyzer, and Socrata ETL architecture cockpit. Built upfront to de-risk delivery.</div>
+          </td>
+          <td style="text-align: center; font-weight: 700; white-space: nowrap;">Live Now</td>
+          <td style="text-align: center; color: #16a34a; font-weight: 700;">Included</td>
+          <td style="text-align: right; font-weight: 800; color: #16a34a;">$0.00 (Live)</td>
         </tr>
         <tr>
-          <td><span class="phase-badge">Phase 1</span></td>
-          <td class="col-deliverable">USAC SODA API Ingestion</td>
-          <td class="col-desc">Machine-readable automated delta sync with opendata.usac.org. Throttled at 2 req/s with SHA-256 deduplication and change logging.</td>
-          <td class="num-col">12 hrs</td>
-          <td class="num-col">$40.00</td>
-          <td class="num-col">$480.00</td>
+          <td class="phase-num">Milestone 1</td>
+          <td>
+            <div class="phase-name">Automated USAC SODA API Ingestion &amp; Delta Sync Engine</div>
+            <div class="phase-desc">Machine-readable automated delta sync with opendata.usac.org. 2 req/s polite rate-limiting, SHA-256 filing hash deduplication, automated daily delta ingestion jobs, and PostgreSQL schema normalization in Supabase.</div>
+          </td>
+          <td style="text-align: center; font-weight: 600;">3 Days</td>
+          <td style="text-align: center; font-weight: 700; color: #0284c7;">21%</td>
+          <td style="text-align: right; font-weight: 700;">$480.00</td>
         </tr>
         <tr>
-          <td><span class="phase-badge">Phase 2</span></td>
-          <td class="col-deliverable">PDF Parser &amp; Addenda Diff</td>
-          <td class="col-desc">Automated PDF equipment schedule extraction, Q&amp;A addenda diffing, and mandatory walkthrough alert notifications.</td>
-          <td class="num-col">14 hrs</td>
-          <td class="num-col">$40.00</td>
-          <td class="num-col">$560.00</td>
+          <td class="phase-num">Milestone 2</td>
+          <td>
+            <div class="phase-name">RFP Document &amp; Addenda Parser with Equipment Schedule Extractor</div>
+            <div class="phase-desc">Automated PDF document processing pipeline extracting itemized bills of materials (BOM), switches, firewalls, and access point counts. Q&amp;A addenda diffing and automated mandatory pre-bid walkthrough alert triggers.</div>
+          </td>
+          <td style="text-align: center; font-weight: 600;">3.5 Days</td>
+          <td style="text-align: center; font-weight: 700; color: #0284c7;">24%</td>
+          <td style="text-align: right; font-weight: 700;">$560.00</td>
         </tr>
         <tr>
-          <td><span class="phase-badge">Phase 3</span></td>
-          <td class="col-deliverable">Explainable Scoring Engine</td>
-          <td class="col-desc">Configurable 0–100 weighting sliders with slide-out audit drawer explaining WHY an RFP scored (+25 OEM, +20 Geo, +15 Scale).</td>
-          <td class="num-col">12 hrs</td>
-          <td class="num-col">$40.00</td>
-          <td class="num-col">$480.00</td>
+          <td class="phase-num">Milestone 3</td>
+          <td>
+            <div class="phase-name">Configurable Explainable Scoring Engine &amp; Slide-Out Audit Drawer</div>
+            <div class="phase-desc">Multi-factor mathematical scoring model: Category (25%), OEM Alignment (25%), Proximity to OKC (20%), Budget Scale (15%), and Runway (15%). Slide-out drawer explaining why each opportunity scored (solving the black-box fear).</div>
+          </td>
+          <td style="text-align: center; font-weight: 600;">3 Days</td>
+          <td style="text-align: center; font-weight: 700; color: #0284c7;">21%</td>
+          <td style="text-align: right; font-weight: 700;">$480.00</td>
         </tr>
         <tr>
-          <td><span class="phase-badge">Phase 4</span></td>
-          <td class="col-deliverable">Public Purchase History Engine</td>
-          <td class="col-desc">Multi-jurisdiction normalization across OK/TX/AR school districts and county boards with 3-year OEM technology refresh timelines.</td>
-          <td class="num-col">12 hrs</td>
-          <td class="num-col">$40.00</td>
-          <td class="num-col">$480.00</td>
+          <td class="phase-num">Milestone 4</td>
+          <td>
+            <div class="phase-name">Multi-Jurisdiction Public Purchase History &amp; 3-Year OEM Refresh Engine</div>
+            <div class="phase-desc">Searchable public purchasing records across OK/TX/AR school districts, counties, and colleges. Entity profile cards with 3-year OEM technology refresh timelines, PO numbers, purchasing vehicles (TIPS/DIR/OMES), and verified source links.</div>
+          </td>
+          <td style="text-align: center; font-weight: 600;">3 Days</td>
+          <td style="text-align: center; font-weight: 700; color: #0284c7;">21%</td>
+          <td style="text-align: right; font-weight: 700;">$480.00</td>
         </tr>
         <tr>
-          <td><span class="phase-badge">Phase 5</span></td>
-          <td class="col-deliverable">Hardened Deployment &amp; Docs</td>
-          <td class="col-desc">Supabase PostgreSQL schemas with Row-Level Security, Vercel Fluid Compute, health monitoring, and complete runbook documentation.</td>
-          <td class="num-col">8 hrs</td>
-          <td class="num-col">$40.00</td>
-          <td class="num-col">$320.00</td>
+          <td class="phase-num">Milestone 5</td>
+          <td>
+            <div class="phase-name">Hardened Cloud Deployment, Inngest Durable Workers &amp; 100% Handover</div>
+            <div class="phase-desc">Production deployment on Vercel Fluid Compute, Inngest durable scheduled cron workers, Supabase RLS security policies, comprehensive developer documentation, and 30-day post-launch warranty.</div>
+          </td>
+          <td style="text-align: center; font-weight: 600;">2 Days</td>
+          <td style="text-align: center; font-weight: 700; color: #0284c7;">14%</td>
+          <td style="text-align: right; font-weight: 700;">$320.00</td>
+        </tr>
+        <tr class="total-row">
+          <td colspan="2" style="font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;">Total Turnkey Production Scope (All Requirements Covered)</td>
+          <td style="text-align: center; font-weight: 800;">14–15 Days</td>
+          <td style="text-align: center; font-weight: 800;">100%</td>
+          <td style="text-align: right; font-weight: 800; font-family: ui-monospace, monospace; font-size: 10px;">$2,320.00</td>
         </tr>
       </tbody>
-      <tfoot>
-        <tr>
-          <td colspan="3" style="text-align: right; padding-right: 8px;">Total Investment &amp; Guaranteed Engineering Scope:</td>
-          <td class="num-col">58 hrs</td>
-          <td class="num-col">$40.00</td>
-          <td class="num-col" style="color: #4f46e5;">$2,320.00</td>
-        </tr>
-      </tfoot>
     </table>
   </div>
 
-  <!-- 3. Milestones & Guardrails Grid -->
-  <div class="grid-row">
+  <!-- 3. 2-Column Technical & Financial Breakdown -->
+  <div class="grid-2col">
     <div class="card-box">
-      <div class="card-title">
-        <span>Architectural Guarantees</span>
-        <span style="color: #4f46e5; font-size: 7.2px;">Defensibility Guardrails</span>
+      <div class="card-box-title">Milestone Escrow &amp; Release Schedule</div>
+      <div class="milestone-item">
+        <span class="milestone-name">Phase 0: Interactive Architectural Prototype (Live)</span>
+        <span class="milestone-val" style="color: #16a34a;">$0.00 (Delivered)</span>
       </div>
-      <div class="item-list">
-        <div class="item-row">
-          <span class="item-bullet">✓</span>
-          <span><strong>100% Public Source Compliance:</strong> Zero CAPTCHA bypassing, zero password-protected scraping, 100% legal compliance under Open Records Acts.</span>
-        </div>
-        <div class="item-row">
-          <span class="item-bullet">✓</span>
-          <span><strong>Polite Rate-Limiting:</strong> Hard-coded 2 requests/second ceiling with exponential backoff to avoid strain on public school district infrastructure.</span>
-        </div>
-        <div class="item-row">
-          <span class="item-bullet">✓</span>
-          <span><strong>Immutable Source Traceability:</strong> Every purchase record and Form 470 filing maintains a direct verifiable URL link to the official public disclosure.</span>
-        </div>
+      <div class="milestone-item">
+        <span class="milestone-name">M1: Automated USAC SODA API Ingestion &amp; Delta Sync</span>
+        <span class="milestone-val">$480.00 (Net 3 Days)</span>
+      </div>
+      <div class="milestone-item">
+        <span class="milestone-name">M2: RFP Document &amp; Addenda Parser with BOM Extractor</span>
+        <span class="milestone-val">$560.00 (Net 6.5 Days)</span>
+      </div>
+      <div class="milestone-item">
+        <span class="milestone-name">M3: Explainable Scoring Engine &amp; Slide-Out Audit Drawer</span>
+        <span class="milestone-val">$480.00 (Net 9.5 Days)</span>
+      </div>
+      <div class="milestone-item">
+        <span class="milestone-name">M4: Purchase History Normalization &amp; 3-Year Refresh Timelines</span>
+        <span class="milestone-val">$480.00 (Net 12.5 Days)</span>
+      </div>
+      <div class="milestone-item">
+        <span class="milestone-name">M5: Inngest Scheduled Workers &amp; 100% Handover</span>
+        <span class="milestone-val">$320.00 (Net 14.5 Days)</span>
       </div>
     </div>
 
     <div class="card-box">
-      <div class="card-title">
-        <span>Client ROI &amp; Value Multiplier</span>
-        <span style="color: #166534; font-size: 7.2px;">Operational Impact</span>
-      </div>
-      <div class="item-list">
-        <div class="item-row">
-          <span class="item-bullet">✓</span>
-          <span><strong>700+ Engineering Hours Saved:</strong> Eliminates 14 hours/week of manual USAC and county portal searches across your senior pre-sales team.</span>
-        </div>
-        <div class="item-row">
-          <span class="item-bullet">✓</span>
-          <span><strong>Early Pursuit Advantage:</strong> Identifies high-margin Fortinet, Cisco, and Aruba opportunities 14+ days before local competitors.</span>
-        </div>
-        <div class="item-row">
-          <span class="item-bullet">✓</span>
-          <span><strong>Sub-Second Dual AI Failover:</strong> Native OpenAI gpt-4o-mini + Gemini 2.0 Flash fallback chain guarantees zero dropped bids during API outages.</span>
-        </div>
-      </div>
+      <div class="card-box-title">Architecture &amp; Compliance Guardrails</div>
+      <div class="guardrail-item"><strong>100% Public Source Compliance:</strong> Zero CAPTCHA bypass or paywall circumvention; compliant with State Open Records Acts</div>
+      <div class="guardrail-item"><strong>Polite Rate-Limiting Policy:</strong> Hardcoded 2 req/s ceiling with exponential backoff on public school district endpoints</div>
+      <div class="guardrail-item"><strong>Explainable Scoring Logic:</strong> Pure transparent mathematical breakdown; zero ungrounded black-box AI numbers</div>
+      <div class="guardrail-item"><strong>Immutable Source Traceability:</strong> Every purchase record maintains direct links to original official meeting minutes/portals</div>
+      <div class="guardrail-item"><strong>Dual-Provider AI Failover:</strong> Native OpenAI gpt-4o-mini with sub-second Gemini 2.0 Flash fallback chain</div>
     </div>
   </div>
 
@@ -550,15 +627,15 @@ def build_estimate():
       </div>
       <div class="term-col">
         <div class="term-title">30-Day Defect Warranty</div>
-        <div class="term-body">Full post-handover warranty covering SODA API schema updates, formula calibration, and ingestion bug fixes at $0 cost.</div>
+        <div class="term-body">Full post-handover warranty covering SODA API changes, scoring weight adjustments, and bug fixes at $0 cost.</div>
       </div>
       <div class="term-col">
-        <div class="term-title">100% IP &amp; Code Ownership</div>
-        <div class="term-body">All Git repositories, Supabase database schemas, and ingestion ETL workers are completely owned by your firm upon milestone sign-off.</div>
+        <div class="term-title">100% Code Ownership</div>
+        <div class="term-body">All Git repositories, Supabase database schemas, and ETL pipelines transferred with no recurring royalties.</div>
       </div>
       <div class="term-col">
         <div class="term-title">Turnkey Runbook Delivery</div>
-        <div class="term-body">Comprehensive developer documentation and operational playbooks for running locally or scaling on private cloud infrastructure.</div>
+        <div class="term-body">Comprehensive developer documentation and operational playbooks for running locally or scaling on private cloud.</div>
       </div>
     </div>
   </div>
@@ -566,33 +643,33 @@ def build_estimate():
   <!-- 5. Formal Acceptance Authorization Block -->
   <div class="auth-block">
     <div class="auth-title">
-      <span>Formal Authorization &amp; Scope Acceptance</span>
+      <span>Formal Authorization &amp; Engagement Acceptance</span>
       <span style="font-weight: 500; font-size: 7.4px; color: #475569;">Binding upon signature by authorized representatives</span>
     </div>
     <div class="auth-grid">
       <div class="auth-party">
         <div class="auth-party-title">Authorized Provider: BarakahSoft LLC (Wyoming, USA)</div>
-        <div>Signatory: <strong>Md Shakil A.</strong> • Principal Systems Architect &amp; Founder</div>
+        <div>Signatory: <strong>Shakil Ahmed</strong> • Principal Systems Architect &amp; Founder</div>
         <div class="auth-sign-line">
           <div class="auth-sign-field">Shakil Ahmed</div>
           <div class="auth-date-field">15 Sep 2026</div>
         </div>
         <div style="display: flex; justify-content: space-between;">
           <span class="auth-label">Authorized Provider Signature</span>
-          <span class="auth-label" style="width: 80px; text-align: center;">Date</span>
+          <span class="auth-label" style="width: 90px; text-align: center;">Date</span>
         </div>
       </div>
 
       <div class="auth-party">
         <div class="auth-party-title">Authorized Client: George (Oklahoma City, OK, USA)</div>
-        <div>Signatory: <strong>George</strong> • Executive Director / Authorized Client Representative</div>
+        <div>Signatory: <strong>George</strong> • Authorized Client Representative</div>
         <div class="auth-sign-line">
-          <div class="auth-sign-field" style="color: #64748b; font-family: inherit; font-size: 8px; font-style: italic;">[ Accepted via Upwork Fixed-Price Contract Milestone #1 ]</div>
+          <div class="auth-sign-field" style="color: #64748b; font-family: inherit; font-size: 8px; font-style: italic;">[ Accepted via Upwork Contract Offer / Milestone #1 ]</div>
           <div class="auth-date-field">___ / ___ / 2026</div>
         </div>
         <div style="display: flex; justify-content: space-between;">
           <span class="auth-label">Authorized Client Signature</span>
-          <span class="auth-label" style="width: 80px; text-align: center;">Date</span>
+          <span class="auth-label" style="width: 90px; text-align: center;">Date</span>
         </div>
       </div>
     </div>
@@ -603,9 +680,9 @@ def build_estimate():
     <div class="footer-founder">
       <img src="data:image/jpeg;base64,{headshot_b64}" alt="Shakil Ahmed" class="founder-avatar" />
       <div class="founder-info">
-        <div class="founder-name"><strong>Md Shakil A.</strong> • Principal Systems Architect (12+ Yrs Exp)</div>
-        <div class="founder-company"><strong>BarakahSoft LLC</strong> • Verified Upwork Partner</div>
-        <div class="founder-sub">Former Lead Engineer at Legiit ($1M ARR Command Center) • 115+ Delivered Systems</div>
+        <div class="founder-name"><strong>Shakil Ahmed</strong> • Founder &amp; Lead Systems Architect (12+ Yrs Exp)</div>
+        <div class="founder-company"><strong>BarakahSoft LLC</strong> • Enterprise GovTech &amp; Public Sector Systems Partner</div>
+        <div class="founder-sub">Former Lead Engineer at Legiit ($1M ARR Command Center) • Verified Upwork Partner</div>
       </div>
     </div>
     <div class="footer-brand">
@@ -636,8 +713,7 @@ def build_estimate():
     res = subprocess.run(chrome_cmd, capture_output=True, text=True)
     if res.returncode == 0:
         print("Successfully generated ESTIMATE.pdf via Chrome Headless at:", pdf_path)
-        file_size = os.path.getsize(pdf_path)
-        print("File size:", file_size, "bytes")
+        print("File size:", os.path.getsize(pdf_path), "bytes")
     else:
         print("Chrome print-to-pdf error:", res.stderr, file=sys.stderr)
         sys.exit(1)
@@ -651,8 +727,6 @@ def build_estimate():
     if len(pages) != 1:
         print(f"CRITICAL ERROR: Expected exactly 1 page, got {len(pages)}!", file=sys.stderr)
         sys.exit(1)
-    else:
-        print("PASSED: Strictly 1 page PDF verified.")
 
 if __name__ == "__main__":
     build_estimate()

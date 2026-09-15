@@ -10,3 +10,4 @@ build
 docs/estimate.html
 docs/ESTIMATE.pdf.png
 .env.local
+.env*
