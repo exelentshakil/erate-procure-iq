@@ -127,7 +127,7 @@ export const CommandDialog: React.FC<CommandDialogProps> = ({
     },
     {
       id: "action-blueprints",
-      title: "Export Architecture Blueprints & Delivery Plan",
+      title: "View Enterprise Architecture & Specifications",
       category: "Documentation",
       icon: Download,
       run: () => {

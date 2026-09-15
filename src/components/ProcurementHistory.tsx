@@ -235,7 +235,7 @@ export const ProcurementHistory: React.FC<ProcurementHistoryProps> = ({
           <div className="space-y-2">
             <div className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text-muted)] flex items-center gap-1.5">
               <Clock className="h-3.5 w-3.5 text-indigo-600" />
-              <span>Technology Purchase History Timeline (Client Brief Example)</span>
+              <span>Technology Purchase History Timeline (3-Year OEM Refresh Cycle)</span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5">

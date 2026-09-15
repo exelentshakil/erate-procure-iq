@@ -105,7 +105,7 @@ export const IngestionArchitecture: React.FC = () => {
               </span>
             </div>
             <p className="text-xs text-[var(--color-text-secondary)] mt-1">
-              Built specifically to address client's core constraint: strict adherence to public data terms without CAPTCHA bypassing, paywall circumvention, or fragile browser scraping.
+              Architected for strict compliance: direct machine-readable public data access without CAPTCHA bypassing, paywall circumvention, or fragile browser scraping.
             </p>
           </div>
 

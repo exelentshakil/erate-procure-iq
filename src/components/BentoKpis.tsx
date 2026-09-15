@@ -105,7 +105,7 @@ export const BentoKpis: React.FC<BentoKpisProps> = ({
                 </span>
               </div>
               <div className="text-xs text-[var(--color-text-muted)] font-medium mt-1 truncate">
-                Weighted against George's line card
+                Weighted against partner OEM line card
               </div>
             </div>
           </div>

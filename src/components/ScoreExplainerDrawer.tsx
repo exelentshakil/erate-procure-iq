@@ -100,7 +100,7 @@ export const ScoreExplainerDrawer: React.FC<ScoreExplainerDrawerProps> = ({
               <div className="flex items-center gap-2">
                 <Sparkles className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
                 <span className="text-xs font-bold uppercase tracking-wider text-indigo-900 dark:text-indigo-300">
-                  Client Defensibility Hook: Why It Scored {score.totalScore}/100
+                  Transparent Scoring Breakdown: Why It Scored {score.totalScore}/100
                 </span>
               </div>
               <div className="text-xl font-extrabold font-mono text-indigo-600 dark:text-indigo-400">
