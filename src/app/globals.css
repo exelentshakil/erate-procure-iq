@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --color-canvas: #f8fafc;
+    --color-surface: #ffffff;
+    --color-surface-hover: #f1f5f9;
+    --color-panel: #ffffff;
+    --color-panel-subtle: #f8fafc;
+    --color-border: #e2e8f0;
+    --color-border-subtle: #edf2f7;
+    --color-border-focus: #4f46e5;
+
+    --color-text-primary: #0f172a;
+    --color-text-secondary: #475569;
+    --color-text-muted: #64748b;
+
+    /* Enterprise Procurement Brand: Federal Navy & Slate Indigo */
+    --color-brand: #0f2942;
+    --color-brand-accent: #4f46e5;
+    --color-brand-blue: #2563eb;
+
+    /* Match Tier Status Indicators */
+    --color-status-green: #059669;
+    --color-status-green-bg: #ecfdf5;
+    --color-status-green-border: #a7f3d0;
+
+    --color-status-blue: #2563eb;
+    --color-status-blue-bg: #eff6ff;
+    --color-status-blue-border: #bfdbfe;
+
+    --color-status-amber: #d97706;
+    --color-status-amber-bg: #fffbeb;
+    --color-status-amber-border: #fde68a;
+
+    --color-status-slate: #64748b;
+    --color-status-slate-bg: #f8fafc;
+    --color-status-slate-border: #cbd5e1;
+  }
+
+  .dark {
+    --color-canvas: #090d16;
+    --color-surface: #0f172a;
+    --color-surface-hover: #1e293b;
+    --color-panel: #0f172a;
+    --color-panel-subtle: #141e33;
+    --color-border: #1e293b;
+    --color-border-subtle: #162032;
+    --color-border-focus: #6366f1;
+
+    --color-text-primary: #f8fafc;
+    --color-text-secondary: #94a3b8;
+    --color-text-muted: #64748b;
+
+    --color-brand: #1e3a8a;
+    --color-brand-accent: #6366f1;
+    --color-brand-blue: #3b82f6;
+
+    --color-status-green: #10b981;
+    --color-status-green-bg: rgba(16, 185, 129, 0.12);
+    --color-status-green-border: rgba(16, 185, 129, 0.3);
+
+    --color-status-blue: #60a5fa;
+    --color-status-blue-bg: rgba(96, 165, 250, 0.12);
+    --color-status-blue-border: rgba(96, 165, 250, 0.3);
+
+    --color-status-amber: #f59e0b;
+    --color-status-amber-bg: rgba(245, 158, 11, 0.12);
+    --color-status-amber-border: rgba(245, 158, 11, 0.3);
+
+    --color-status-slate: #94a3b8;
+    --color-status-slate-bg: rgba(148, 163, 184, 0.12);
+    --color-status-slate-border: rgba(148, 163, 184, 0.3);
+  }
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--color-canvas);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code, kbd, pre, .font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}

@@ -1,0 +1,12 @@
+node_modules
+.next
+out
+build
+.DS_Store
+*.pem
+.env*.local
+.env
+.vercel
+docs/estimate.html
+docs/ESTIMATE.pdf.png
+.env.local
